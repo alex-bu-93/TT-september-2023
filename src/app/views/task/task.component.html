@@ -1,0 +1,67 @@
+<ng-container *ngIf="workerJobListener$ | async"></ng-container>
+
+<div style="flex-wrap: wrap;" class="d-flex gap-05">
+  <div class="d-flex flex-column flex-grow-1">
+    <label>Timer, ms</label>
+    <nz-input-number [nzMin]="0" [nzStep]="1000" [formControl]="fg.controls.interval"/>
+  </div>
+  <div class="d-flex flex-column flex-grow-1">
+    <label>Array size</label>
+    <nz-input-number [nzMin]="0" [nzStep]="2" [formControl]="fg.controls.count"/>
+  </div>
+  <div class="d-flex flex-column flex-grow-2">
+    <label>Additional array Ids</label>
+    <nz-select nzMode="tags" nzDropdownClassName="d-none" [(ngModel)]="additionalIds" (ngModelChange)="updateWithAdditionIds()"/>
+  </div>
+</div>
+<hr/>
+<ng-container *ngIf="items$ | async as items else noItemsTmp">
+  <div class="overflow-auto">
+    <table class="main-table">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Int</th>
+        <th>Float</th>
+        <th>Color</th>
+        <th>Child</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of items" class="with-border-dark-cells">
+        <td>{{item.id}}</td>
+        <td>{{item.int}}</td>
+        <td>{{item.float | number : '1.10-18'}}</td>
+        <td class="color-td">
+          <span [style.background-color]="item.color">{{item.color}}</span>
+        </td>
+        <td>
+          <table class="child-table">
+            <thead>
+            <tr>
+              <th>Id</th>
+              <th>Color</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>{{item.child.id}}</td>
+              <td>
+                <span [style.background-color]="item.child.color">{{item.child.color}}</span>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
+
+<ng-template #noItemsTmp>
+  <p class="no-data">
+    <span *ngIf="items$.value === null">No data to display</span>
+    <span *ngIf="items$.value === undefined">Loading ...</span>
+  </p>
+</ng-template>

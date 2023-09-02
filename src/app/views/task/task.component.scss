@@ -1,0 +1,55 @@
+:host {
+  display: block;
+  padding: 1rem;
+  border: 1px solid lightgrey;
+  background: white;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td {
+  text-align: center;
+  padding: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+hr {
+  margin: 1rem -1rem;
+}
+
+nz-input-number, nz-select {
+  width: 100%;
+  min-width: 200px;
+}
+
+.main-table {
+  min-width: 500px;
+  border-collapse: separate;
+  border-spacing: 0 0.25rem;
+}
+
+.child-table {
+  border: 1px black solid;
+}
+
+.with-border-dark-cells {
+  >td {
+    border-top: 1px black solid;
+    border-bottom: 1px black solid;
+  }
+  td:first-child {
+    border-left: 1px black solid;
+  }
+  td:last-child {
+    border-right: 1px black solid;
+  }
+}
+
+.no-data {
+  text-align: center;
+  margin: 3rem;
+}

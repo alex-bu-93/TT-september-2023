@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.flex-grow-2 {
+  flex-grow: 2;
+}
+
+.gap-05 {
+  gap: 0.5rem;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.d-none {
+  display: none;
+}
